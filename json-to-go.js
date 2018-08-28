@@ -124,6 +124,8 @@ function jsonToGo(json, typename)
 			{
 				append(',omitempty');
 			}
+			append('" form:"'+keyname);
+			append('" bson:"'+keyname);
 			append('"`\n');
 		}
 		indent(--tabs);

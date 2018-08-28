@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander');
+var jsonToGo = require('./json-to-go.js');
+var fs = require('fs');
+
+program
+  .version('0.1.0')
+  .option('-i, --input <input>', 'json file')
+  .option('-n, --name <name>', 'type name')
+  .parse(process.argv);
+
+// console.log(program.input)
+// console.log(program.name)
+
+fs.readFile(program.input, 'utf8', function(err, contents) {
+  if (err) {
+    return console.log(err);
+  }
+    console.log(jsonToGo(contents, program.name).go);
+});
+
